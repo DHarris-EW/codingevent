@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col col-lg-9">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>LogIn</h2>
+                </div>
+                <div class="card-body px-5 pb-5">
+                    <form method="post" action="" novalidate>
+                        {{ form.hidden_tag() }}
+                        <fieldset class="form-group">
+                            <div class="form-group pb-3">
+                                {{ form.service_number.label(class="form-control-label") }}
+
+                                {% if form.service_number.errors %}
+                                    {{ form.service_number(class="form-control is-invalid", placeholder="Service Number") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.service_number.errors %}
+                                            <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.service_number(class="form-control form-control-lg", placeholder="Service Number") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group pb-3">
+                                {{ form.password.label(class="form-control-label") }}
+
+                                {% if form.password.errors %}
+                                    {{ form.password(class="form-control is-invalid", placeholder="Password") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.password.errors %}
+                                            <span>{{error}}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.password(class="form-control form-control-lg", placeholder="Password") }}
+                                {% endif %}
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check pb-3">
+                                        {{ form.remember(class="form-check-input") }}
+                                        {{ form.remember.label(class="form-check-label") }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                     <small class="text-muted float-end">
+                                        <a href="#">Forgot password?</a>
+                                    </small>
+                                </div>
+
+                            </div>
+
+                        </fieldset>
+                        <div class="form-group d-grid">
+                            {{ form.sumbit(class="btn btn-lg btn-success") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
